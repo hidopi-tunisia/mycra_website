@@ -8,10 +8,10 @@ services:
       - db_data:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: Nassira14
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: Nassira14
+      MYSQL_ROOT_PASSWORD: Hidopi2023
+      MYSQL_DATABASE: mycra_db
+      MYSQL_USER: mycra_user
+      MYSQL_PASSWORD: Hidopi2023
     networks:
       - wpsite
 
@@ -25,7 +25,7 @@ services:
       - '8001:80'
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: Nassira14
+      MYSQL_ROOT_PASSWORD: Hidopi2023
     networks:
       - wpsite
 
@@ -41,8 +41,8 @@ services:
     volumes: ['./:/var/www/html']
     environment:
       WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: Nassira14
+      WORDPRESS_DB_USER: mycra_user
+      WORDPRESS_DB_PASSWORD: Hidopi2023
     networks:
       - wpsite
 
