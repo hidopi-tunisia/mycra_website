@@ -9,8 +9,8 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: Hidopi2023
-      MYSQL_DATABASE: mycra-hidopi
-      MYSQL_USER: mycra-hidopi
+      MYSQL_DATABASE: mycrabdd
+      MYSQL_USER: mycraHidopi
       MYSQL_PASSWORD: Hidopi2023
     networks:
       - wpsite
@@ -41,7 +41,7 @@ services:
     volumes: ['./:/var/www/html']
     environment:
       WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: mycra-hidopi
+      WORDPRESS_DB_USER: mycraHidopi
       WORDPRESS_DB_PASSWORD: Hidopi2023
     networks:
       - wpsite
