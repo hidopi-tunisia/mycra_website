@@ -1,48 +1,31 @@
 version: '3'
 
 services:
-  # Database
-  db:
-    image: mysql:5.7
+  # Service Database pour le premier site
+  db_site1:
+    image: mysql:8.0
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data_site1:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: passwordvart
-      MYSQL_DATABASE: vartbd
-      MYSQL_USER: vartsite
-      MYSQL_PASSWORD: passwordvart
-    networks:
-      - wpsite
-  # phpmyadmin
-  phpmyadmin:
+      MYSQL_ROOT_PASSWORD: password_site1
+      MYSQL_DATABASE: wordpress_site1
+      MYSQL_USER: user_site1
+      MYSQL_PASSWORD: password_site1
+
+  # Service WordPress pour le premier site
+  wordpress_site1:
     depends_on:
-      - db
-    image: phpmyadmin/phpmyadmin
-    restart: always
-    ports:
-      - '9001:80'
-    environment:
-      PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: passwordvart 
-    networks:
-      - wpsite
-  # Wordpress
-  wordpress:
-    depends_on:
-      - db
+      - db_site1
     image: wordpress:latest
     ports:
-      - '9000:80'
+      - '8001:80'
     restart: always
-    volumes: ['./:/var/www/html']
+    volumes: ['./wordpress:/var/www/html']
     environment:
-      WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: vartsite
-      WORDPRESS_DB_PASSWORD: passwordvart
-    networks:
-      - wpsite
-networks:
-  wpsite:
+      WORDPRESS_DB_HOST: db_site1:3306
+      WORDPRESS_DB_USER: user_site1
+      WORDPRESS_DB_PASSWORD: password_site1
+
 volumes:
-  db_data:
+  db_data_site1:
