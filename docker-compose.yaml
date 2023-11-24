@@ -14,7 +14,7 @@ services:
       MYSQL_PASSWORD: password_site1
 
   # Service WordPress pour le premier site
-  wordpress_site1:
+  vart_site:
     depends_on:
       - db_site1
     image: wordpress:latest
