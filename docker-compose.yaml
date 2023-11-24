@@ -19,7 +19,7 @@ services:
       - db_site1
     image: wordpress:latest
     ports:
-      - '9001:80'
+      - '9002:80'
     restart: always
     volumes: ['./wordpress:/var/www/html']
     environment:
