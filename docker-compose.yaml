@@ -29,7 +29,7 @@ services:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: password
     volumes:
-      - ./php.ini:/usr/local/etc/php/conf.d/php-custom.ini  
+      - /home/amex/amexBusinessWP/php.ini:/usr/local/etc/php/conf.d/php-custom.ini
     networks:
       - amexBusiness_network
 
@@ -44,7 +44,7 @@ services:
     restart: always
     volumes:
       - ./wordpress:/var/www/html
-      - ./php.ini:/usr/local/etc/php/conf.d/php-custom.ini
+      - /home/amex/amexBusinessWP/php.ini:/usr/local/etc/php/conf.d/php-custom.ini
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_NAME: x442g41k_o9ldb
