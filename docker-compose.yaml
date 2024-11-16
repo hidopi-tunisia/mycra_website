@@ -10,7 +10,7 @@ services:
       - "3311:3306"
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: mmbdb
+      MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
     networks:
@@ -24,7 +24,7 @@ services:
     container_name: mmb_phpmyadmin
     restart: always
     ports:
-      - '8301:80'
+      - '8401:80'
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: password
@@ -37,10 +37,10 @@ services:
   wordpress:
     depends_on:
       - db
-    image: wordpress:6.7
+    image: wordpress:latest
     container_name: mmb_wp
     ports:
-      - '8300:80'
+      - '8400:80'
     restart: always
     volumes:
       - ./wordpress:/var/www/html
